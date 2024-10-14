@@ -1,6 +1,7 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -24,6 +25,11 @@ public class Chassis extends SubsystemBase {
     tmotor_chasis_bl.setInverted(true);
     tmotor_chasis_fl.setInverted(true);
 
+    tmotor_chasis_bl.setNeutralMode(NeutralMode.Brake);
+    tmotor_chasis_fl.setNeutralMode(NeutralMode.Brake);
+    tmotor_chasis_br.setNeutralMode(NeutralMode.Brake);
+    tmotor_chasis_fr.setNeutralMode(NeutralMode.Brake);
+
     gyro.reset();
   }
 
@@ -37,6 +43,7 @@ public class Chassis extends SubsystemBase {
 
     tmotor_chasis_bl.set(ControlMode.PercentOutput, leftPower);
     tmotor_chasis_fl.set(ControlMode.PercentOutput, leftPower);
+
     tmotor_chasis_br.set(ControlMode.PercentOutput, rightPower);
     tmotor_chasis_fr.set(ControlMode.PercentOutput, rightPower);
   }

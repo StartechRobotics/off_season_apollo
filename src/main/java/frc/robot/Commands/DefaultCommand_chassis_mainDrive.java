@@ -25,10 +25,10 @@ public class DefaultCommand_chassis_mainDrive extends Command {
   @Override
   public void execute() {
     drive = joystick.getRawAxis(2) - joystick.getRawAxis(3);
-    turn = joystick.getRawAxis(0) * 0.6; 
+    // drive = joystick.getRawAxis(1);
+    turn =( joystick.getRawAxis(0) * 0.6); 
 
     R_chassis.mainDrive(drive,turn);
-
   }
 
   // Called once the command ends or is interrupted.
