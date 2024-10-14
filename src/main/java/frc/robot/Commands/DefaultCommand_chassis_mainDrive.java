@@ -2,6 +2,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.Subsystems.Chassis;
 
 public class DefaultCommand_chassis_mainDrive extends Command {
@@ -26,7 +27,7 @@ public class DefaultCommand_chassis_mainDrive extends Command {
   public void execute() {
     drive = joystick.getRawAxis(2) - joystick.getRawAxis(3);
     // drive = joystick.getRawAxis(1);
-    turn =( joystick.getRawAxis(0) * 0.6); 
+    turn =( joystick.getRawAxis(0) * Constants.kTurn); 
 
     R_chassis.mainDrive(drive,turn);
   }

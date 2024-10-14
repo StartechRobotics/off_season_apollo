@@ -9,12 +9,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Chassis extends SubsystemBase {
-//Aquí se declaran las cosas de hardware, (controladores, sensores, commandgroups)
-  TalonSRX tmotor_chasis_fl = new TalonSRX(Constants.TMOTOR_CHASSIS_FL);
-  TalonSRX tmotor_chasis_fr = new TalonSRX(Constants.TMOTOR_CHASSIS_FR);
-  TalonSRX tmotor_chasis_bl = new TalonSRX(Constants.TMOTOR_CHASSIS_BL);
-  TalonSRX tmotor_chasis_br = new TalonSRX(Constants.TMOTOR_CHASSIS_BR);
- 
+  TalonSRX tmotor_chasis_fl;
+  TalonSRX tmotor_chasis_fr;
+  TalonSRX tmotor_chasis_bl;
+  TalonSRX tmotor_chasis_br;
+
   ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
   double leftPower;
@@ -22,6 +21,11 @@ public class Chassis extends SubsystemBase {
 
   public Chassis() {
   //Aquí se inicializan las acciónes que solo se ejecutan una vez. (inverted, encoderPos, reset, etc).
+    tmotor_chasis_fl = new TalonSRX(Constants.TMOTOR_CHASSIS_FL);
+    tmotor_chasis_fr = new TalonSRX(Constants.TMOTOR_CHASSIS_FR);
+    tmotor_chasis_bl = new TalonSRX(Constants.TMOTOR_CHASSIS_BL);
+    tmotor_chasis_br = new TalonSRX(Constants.TMOTOR_CHASSIS_BR);
+
     tmotor_chasis_bl.setInverted(true);
     tmotor_chasis_fl.setInverted(true);
 
@@ -31,11 +35,7 @@ public class Chassis extends SubsystemBase {
     tmotor_chasis_fr.setNeutralMode(NeutralMode.Brake);
 
     gyro.reset();
-  }
-
-  //Aquí se ponen las acciones que se repiten periodicamente
-  @Override
-  public void periodic() {}
+  } 
 
   public void mainDrive(double drive, double turn){
     leftPower = drive - turn;
@@ -48,5 +48,6 @@ public class Chassis extends SubsystemBase {
     tmotor_chasis_fr.set(ControlMode.PercentOutput, rightPower);
   }
 
-
+  @Override
+  public void periodic() {}
 }

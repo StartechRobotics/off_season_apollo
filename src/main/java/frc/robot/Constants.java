@@ -4,6 +4,8 @@ public class Constants {
     
     public static final int kDriverControllerPort = 0;
     public static final int kMechControllerPort = 1;
+    public static final double kTurn = 0.6;
+    public static final double kShooterRatio = 2/(23/8);
 
     public static final int TMOTOR_CHASSIS_FL = 9;
     public static final int TMOTOR_CHASSIS_BL = 10;
