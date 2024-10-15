@@ -25,7 +25,7 @@ public class Constants {
     public static final int TMOTOR_INTAKE_BIG = 14;
     public static final int SMOTOR_INTAKE_BACK = 3;
 
-    public static final int LSWITCH_SHOOTER = 8;
+    public static final int LSWITCH_SHOOTER = 0;
     public static final int LSWITCH_FWD = 9;
     public static final int LSWITCH_BWD = 7;
 
