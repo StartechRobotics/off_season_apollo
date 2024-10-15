@@ -38,7 +38,7 @@ public class Constants {
     public static final double TSPEAKER_POS=6;
     public static final double TONSTAGE_POS=4;
  
-    // revision/test pending
-    public static final int SUCK_BUTTON = 0;
-    public static final int SHOOT_BUTTON = 1;
+    // --------------
+    public static final int SUCK_BUTTON = 1;
+    public static final int SHOOT_BUTTON = 0;
 }
