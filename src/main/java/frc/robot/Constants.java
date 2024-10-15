@@ -6,6 +6,7 @@ public class Constants {
     public static final int kMechControllerPort = 1;
     public static final double kTurn = 0.6;
     public static final double kShooterRatio = 2/(23/8);
+    public static final double kChargeTimeMs = 500;
 
     public static final int TMOTOR_CHASSIS_FL = 9;
     public static final int TMOTOR_CHASSIS_BL = 10;
@@ -39,4 +40,5 @@ public class Constants {
  
     // revision/test pending
     public static final int SUCK_BUTTON = 0;
+    public static final int SHOOT_BUTTON = 1;
 }

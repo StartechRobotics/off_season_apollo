@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.DefaultCommand_chassis_mainDrive;
+import frc.robot.Commands.command_shoot;
 import frc.robot.Commands.command_suck;
 import frc.robot.Subsystems.*;
 
@@ -30,6 +31,7 @@ public class RobotContainer {
 
   private void configureBindings() {
     c_mechController.button(Constants.SUCK_BUTTON, null).onTrue(new command_suck(m_shooter));
+    c_mechController.button(Constants.SHOOT_BUTTON, null).onTrue(new command_shoot(m_shooter));
   }
 
   private void defaultCommands() {
