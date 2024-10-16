@@ -67,8 +67,8 @@ public class Turret extends SubsystemBase {
     if (lswitch_front.get() == false){
       resetEncoders();
     }
-    SmartDashboard.putNumber("encoder_l", encoder_l.getPosition());
-    SmartDashboard.putNumber("encoder_r", encoder_r.getPosition());
+    SmartDashboard.putNumber("encoder_l", Math.round(encoder_l.getPosition()));
+    SmartDashboard.putNumber("encoder_r", Math.round(encoder_r.getPosition()));
     SmartDashboard.putBoolean("lswitch front", !lswitch_front.get());
   }
 }
