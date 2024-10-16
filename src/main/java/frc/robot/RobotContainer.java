@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.event.EventLoop;
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.DefaultCommand_chassis_mainDrive;
 import frc.robot.Commands.command_shoot;
@@ -22,7 +24,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   
   private final Joystick m_driverController = new Joystick(Constants.kDriverControllerPort);
-  private  final CommandJoystick c_mechController = new CommandJoystick(Constants.kMechControllerPort);
+  private  final Joystick c_mechController = new Joystick(Constants.kMechControllerPort);
 
   public RobotContainer() {
     configureBindings();
@@ -30,12 +32,14 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    c_mechController.button(Constants.SUCK_BUTTON, null).onTrue(new command_suck(m_shooter));
-    c_mechController.button(Constants.SHOOT_BUTTON, null).onTrue(new command_shoot(m_shooter));
+    new JoystickButton(c_mechController, Constants.SUCK_BUTTON).onTrue(new command_suck(m_shooter));
+    // new c_mechController.button(Constants.SHOOT_BUTTON).onTrue(new command_shoot(m_shooter));
+    new JoystickButton(c_mechController, Constants.SHOOT_BUTTON).onTrue(new command_shoot(m_shooter));
   }
 
   private void defaultCommands() {
     m_chassis.setDefaultCommand(new DefaultCommand_chassis_mainDrive(m_chassis, m_driverController));
+
   }
 
   public Command getAutonomousCommand() {

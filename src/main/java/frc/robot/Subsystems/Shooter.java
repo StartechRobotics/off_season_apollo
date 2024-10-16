@@ -49,7 +49,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void launch(){
-    power_back = 0.7;
+    power_back = 1;
     motor_back.set(power_back);
   }
 
@@ -67,8 +67,8 @@ public class Shooter extends SubsystemBase {
   // metodos del intake-----
 
   public void suck(){
-    note_in = lswitch.get();
-    if (note_in == false){
+    // note_in = !lswitch.get();
+    // if (note_in == false){
       power_small = -0.8;
       power_big = -0.2;
       power_back = -0.2;
@@ -76,18 +76,18 @@ public class Shooter extends SubsystemBase {
       motor_small.set(ControlMode.PercentOutput, power_small);
       motor_big.set(ControlMode.PercentOutput,power_big);
       motor_back.set(power_back);
-    }
+    // }
   }
 
   // data retrieving methods--
   
   public boolean get_note_switch(){
-    note_in = lswitch.get();
+    note_in = !lswitch.get();
     return note_in;
   }
 
   @Override
   public void periodic() {
-    SmartDashboard.putBoolean("Note in", lswitch.get());
+    SmartDashboard.putBoolean("Note in", !lswitch.get());
   }
 }

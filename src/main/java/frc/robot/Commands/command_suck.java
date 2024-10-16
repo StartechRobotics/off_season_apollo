@@ -4,12 +4,16 @@
 
 package frc.robot.Commands;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.Shooter;
 
 public class command_suck extends Command {
 
   Shooter shooter;
+  boolean status;
+
 
   public command_suck(Shooter m_shooter) {
     this.shooter = m_shooter;
@@ -18,12 +22,12 @@ public class command_suck extends Command {
 
   @Override
   public void initialize() {
-    shooter.stop();
     shooter.suck();
   }
 
   @Override
   public void execute() {
+    status = shooter.get_note_switch();
   }
 
   @Override
@@ -33,6 +37,6 @@ public class command_suck extends Command {
 
   @Override
   public boolean isFinished() {
-    return shooter.get_note_switch();
+    return status;  
   }
 }

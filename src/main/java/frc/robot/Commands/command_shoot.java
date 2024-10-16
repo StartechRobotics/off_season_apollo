@@ -36,7 +36,7 @@ public class command_shoot extends Command {
   @Override
   public void end(boolean interrupted) {
     shooter.launch();
-    new WaitCommand(1);
+    new WaitCommand(2);
     shooter.stop();
   }
 
