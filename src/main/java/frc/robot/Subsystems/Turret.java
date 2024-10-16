@@ -6,6 +6,7 @@ package frc.robot.Subsystems;
 
 import org.ejml.equation.IntegerSequence.Range;
 
+import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkBase.IdleMode;
@@ -28,6 +29,8 @@ public class Turret extends SubsystemBase {
   RelativeEncoder encoder_l;
   RelativeEncoder encoder_r;
 
+  AbsoluteEncoder abs_encoder_l;
+
   double position;
   double default_power;
   double power;
@@ -48,6 +51,10 @@ public class Turret extends SubsystemBase {
     encoder_r = motor_shooter_r.getEncoder();
 
     lswitch_front = new DigitalInput(Constants.LSWITCH_FWD);
+
+    abs_encoder_l = motor_shooter_l.getAbsoluteEncoder();
+
+    
   }
 
   
@@ -56,6 +63,7 @@ public class Turret extends SubsystemBase {
   public void periodic() {
     SmartDashboard.putNumber("encoder_l", encoder_l.getPosition());
     SmartDashboard.putNumber("encoder_r", encoder_r.getPosition());
+    SmartDashboard.putNumber("absolute l", abs_encoder_l.getPosition());
     SmartDashboard.putBoolean("lswitch front", lswitch_front.get());
   }
 }
