@@ -46,20 +46,27 @@ public class Turret extends SubsystemBase {
 
     encoder_l = motor_shooter_l.getEncoder();
     encoder_r = motor_shooter_r.getEncoder();
+    encoder_l.setPositionConversionFactor(7.71);
+    encoder_r.setPositionConversionFactor(7.71);
 
     lswitch_front = new DigitalInput(Constants.LSWITCH_FWD);
     if (lswitch_front.get() == false){
-      encoder_l.setPosition(0);
-      encoder_r.setPosition(0);
+      resetEncoders();
     }
 
-    encoder_l.setPositionConversionFactor(7.71);
   }
 
+  public void resetEncoders(){
+    encoder_l.setPosition(0);
+    encoder_r.setPosition(0);
+  }
   
   // Putnumbers Periodicos
   @Override
   public void periodic() {
+    if (lswitch_front.get() == false){
+      resetEncoders();
+    }
     SmartDashboard.putNumber("encoder_l", encoder_l.getPosition());
     SmartDashboard.putNumber("encoder_r", encoder_r.getPosition());
     SmartDashboard.putBoolean("lswitch front", !lswitch_front.get());
