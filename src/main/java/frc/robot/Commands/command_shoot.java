@@ -3,6 +3,7 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
@@ -10,13 +11,16 @@ import frc.robot.Subsystems.Shooter;
 
 public class command_shoot extends Command {
   Shooter shooter;
-  Timer timer;
-  boolean is_ready = false;
+  public Timer timer;
+  public double timeinMs;
+  boolean is_ready;
+  
 
   public command_shoot(Shooter m_shooter) {
     this.shooter = m_shooter;
     addRequirements(shooter);
     timer = new Timer();
+    is_ready = false;
   }
 
   @Override
@@ -29,18 +33,21 @@ public class command_shoot extends Command {
 
   @Override
   public void execute() {
+    timeinMs = timer.get()*1000;
     is_ready = timer.get()*1000 > Constants.kChargeTimeMs;
+    SmartDashboard.putNumber("time", timeinMs);
   }
 
-  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+  
     shooter.launch();
     new WaitCommand(2);
+    timer.reset();
     shooter.stop();
+
   }
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return is_ready;

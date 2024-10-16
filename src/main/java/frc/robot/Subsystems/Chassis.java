@@ -37,6 +37,7 @@ public class Chassis extends SubsystemBase {
     gyro.reset();
   } 
 
+  //Comando de defecto, "default command". comando para manejo del robot, se lee constantemente cada iteracion.
   public void mainDrive(double drive, double turn){
     leftPower = drive - turn;
     rightPower = drive + turn;
@@ -48,6 +49,7 @@ public class Chassis extends SubsystemBase {
     tmotor_chasis_fr.set(ControlMode.PercentOutput, rightPower);
   }
 
+  //Metodos que se usan en los comandos.
   @Override
   public void periodic() {}
 }
