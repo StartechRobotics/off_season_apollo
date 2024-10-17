@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.DefaultCommand_chassis_mainDrive;
 import frc.robot.Commands.command_shoot;
+import frc.robot.Commands.command_stop;
 import frc.robot.Commands.command_suck;
 import frc.robot.Subsystems.*;
 
@@ -35,7 +36,9 @@ public class RobotContainer {
   private void configureBindings() {
     new JoystickButton(c_mechController, Constants.SUCK_BUTTON).onTrue(new command_suck(m_shooter));
     // new c_mechController.button(Constants.SHOOT_BUTTON).onTrue(new command_shoot(m_shooter));
-    new JoystickButton(c_mechController, Constants.SHOOT_BUTTON).onTrue(new command_shoot(m_shooter));
+    new JoystickButton(c_mechController, Constants.SHOOT_BUTTON).toggleOnTrue(new command_shoot(m_shooter));
+    new JoystickButton(c_mechController, Constants.SHOOT_BUTTON).toggleOnFalse(new command_stop(m_shooter));
+
   }
 
   private void defaultCommands() {

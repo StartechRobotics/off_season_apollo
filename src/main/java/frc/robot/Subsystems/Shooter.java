@@ -8,11 +8,13 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.Commands.command_suck;
 
@@ -37,6 +39,7 @@ public class Shooter extends SubsystemBase {
     motor_back = new CANSparkMax(Constants.SMOTOR_INTAKE_BACK, MotorType.kBrushed);
 
     motor_big.setNeutralMode(NeutralMode.Brake);
+    motor_back.setIdleMode(IdleMode.kBrake);
 
     lswitch = new DigitalInput(Constants.LSWITCH_SHOOTER);
   }
@@ -45,12 +48,19 @@ public class Shooter extends SubsystemBase {
   public void charge(){
     power_small = 0.85;
     power_big = power_small*Constants.kShooterRatio;
+
     motor_small.set(ControlMode.PercentOutput,power_small);
     motor_big.set(ControlMode.PercentOutput,power_big);
   }
 
   public void launch(){
-    power_back = 1;
+    power_small = 0.85;
+    power_big = power_small*Constants.kShooterRatio;
+
+    motor_small.set(ControlMode.PercentOutput,power_small);
+    motor_big.set(ControlMode.PercentOutput,power_big);
+
+    power_back = 0.8;
     motor_back.set(power_back);
   }
 
@@ -60,6 +70,7 @@ public class Shooter extends SubsystemBase {
     power_small = 0;
     power_big = 0;
     power_back = 0;
+
     motor_small.set(ControlMode.PercentOutput, 0);
     motor_big.set(ControlMode.PercentOutput,0);
     motor_back.set(0);
@@ -72,7 +83,7 @@ public class Shooter extends SubsystemBase {
     // if (note_in == false){
       power_small = -0.8;
       power_big = -0.2;
-      power_back = -0.2;
+      power_back = -0.1;
 
       motor_small.set(ControlMode.PercentOutput, power_small);
       motor_big.set(ControlMode.PercentOutput,power_big);
@@ -90,5 +101,6 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putBoolean("Note in", !lswitch.get());
+    SmartDashboard.putNumber("motor front", motor_small.getMotorOutputVoltage());
   }
 }

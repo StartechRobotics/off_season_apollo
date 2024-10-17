@@ -2,6 +2,8 @@
 
 package frc.robot.Commands;
 
+import com.ctre.phoenix6.ISerializable;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -20,6 +22,7 @@ public class command_shoot extends Command {
   public command_shoot(Shooter m_shooter) {
     this.shooter = m_shooter;
     addRequirements(shooter);
+    
     timer = new Timer();
     is_ready = false;
   }
@@ -38,20 +41,21 @@ public class command_shoot extends Command {
     timeinMs = timer.get()*1000;
     is_ready = timer.get()*1000 > Constants.kChargeTimeMs;
     SmartDashboard.putNumber("time", timeinMs);
+    
   }
 
   @Override
   public void end(boolean interrupted) {
-  
     shooter.launch();
-    new WaitCommand(2);
-    timer.reset();
-    shooter.stop();
-
   }
 
   @Override
   public boolean isFinished() {
-    return is_ready;
+    if (is_ready == true){
+    return true;
+    }
+    else {
+    return false;
+    }
   }
 }
