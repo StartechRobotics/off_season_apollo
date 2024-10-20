@@ -47,15 +47,11 @@ public class command_shoot extends Command {
   @Override
   public void end(boolean interrupted) {
     shooter.launch();
+
   }
 
   @Override
   public boolean isFinished() {
-    if (is_ready == true){
-    return true;
-    }
-    else {
-    return false;
-    }
+    return is_ready;
   }
 }
