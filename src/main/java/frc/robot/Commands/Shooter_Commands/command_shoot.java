@@ -1,6 +1,6 @@
 
 
-package frc.robot.Commands;
+package frc.robot.Commands.Shooter_Commands;
 
 import com.ctre.phoenix6.ISerializable;
 

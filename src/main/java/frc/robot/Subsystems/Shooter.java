@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
-import frc.robot.Commands.command_suck;
+import frc.robot.Commands.Shooter_Commands.command_suck;
 
 public class Shooter extends SubsystemBase {
 
@@ -81,8 +81,8 @@ public class Shooter extends SubsystemBase {
   public void suck(){
     // note_in = !lswitch.get();
     // if (note_in == false){
-      power_small = -0.8;
-      power_big = -0.2;
+      power_small = -0.9;
+      power_big = -0.25;
       power_back = -0.1;
 
       motor_small.set(ControlMode.PercentOutput, power_small);

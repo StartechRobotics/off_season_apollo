@@ -4,10 +4,6 @@
 
 package frc.robot.Subsystems;
 
-import java.nio.file.LinkPermission;
-
-import org.ejml.equation.IntegerSequence.Range;
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
@@ -16,11 +12,8 @@ import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 
 public class Turret extends SubsystemBase {
@@ -83,7 +76,7 @@ public class Turret extends SubsystemBase {
     r_PID = motor_turret_r.getPIDController();
 
     //constants
-    double kP = 0.01; 
+    double kP = 0.012; 
     double kI = .00;
     double kD = 0.6; 
     double kIz = 0; 
@@ -131,13 +124,13 @@ public class Turret extends SubsystemBase {
   }
   
   public void setPOSUp(){
-    l_PID.setReference(70,ControlType.kPosition);
+    l_PID.setReference(71,ControlType.kPosition);
     r_PID.setReference(72,ControlType.kPosition);
 
   }
   public void setPOSDown(){
-    l_PID.setReference(2,ControlType.kPosition);
-    r_PID.setReference(4,ControlType.kPosition);
+    l_PID.setReference(0,ControlType.kPosition);
+    r_PID.setReference(0,ControlType.kPosition);
 
   }
 
@@ -150,6 +143,7 @@ public class Turret extends SubsystemBase {
 
     SmartDashboard.putNumber("encoder_l", Math.round(encoder_l.getPosition()));
     SmartDashboard.putNumber("encoder_r", Math.round(encoder_r.getPosition()));
+
     SmartDashboard.putBoolean("lswitch front", !lswitch_front.get());
 
     SmartDashboard.putNumber("motor-Left", motor_turret_l.getOutputCurrent());

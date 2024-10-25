@@ -5,31 +5,26 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Turret;
+import frc.robot.Subsystems.Climber;
 
-public class setposDown extends Command {
-  Turret turret;
-  
+public class command_stopClimber extends Command {
+  Climber climber;
 
-  public setposDown(Turret m_turret) {
-    this.turret = m_turret;
-    addRequirements(turret);
-
+  public command_stopClimber(Climber m_climber) {
+    this.climber = m_climber;
+    addRequirements(climber);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turret.setPOSDown();
-
+    climber.stop();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    
-
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override

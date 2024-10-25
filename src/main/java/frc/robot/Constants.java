@@ -18,8 +18,8 @@ public class Constants {
     public static final int SMOTOR_SHOOTER_L = 2;
     public static final int SMOTOR_SHOOTER_R = 1;
 
-    public static final int SMOTOR_CLIMBER_L = 20;
-    public static final int SMOTOR_CLIMBER_R = 10;
+    public static final int SMOTOR_CLIMBER_L = 5;
+    public static final int SMOTOR_CLIMBER_R = 6;
 
     public static final int TMOTOR_INTAKE_SMALL = 13;
     public static final int TMOTOR_INTAKE_BIG = 14;

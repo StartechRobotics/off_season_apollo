@@ -2,34 +2,29 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands;
+package frc.robot.Commands.Shooter_Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Turret;
+import frc.robot.Subsystems.Shooter;
 
-public class setposTest extends Command {
-  Turret turret;
-  
-
-  public setposTest(Turret m_turret) {
-    this.turret = m_turret;
-    addRequirements(turret);
-
+public class command_stop extends Command {
+  /** Creates a new command_stop. */
+  Shooter shooter;
+  public command_stop(Shooter m_shooter) {
+    this.shooter = m_shooter;
+    addRequirements(shooter);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turret.setPOSUp();
-
+    shooter.stop();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    
-
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override

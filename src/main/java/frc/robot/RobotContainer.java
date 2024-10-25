@@ -17,17 +17,21 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.DefaultCommand_chassis_mainDrive;
 import frc.robot.Commands.DefaultCommand_moveTurret;
-import frc.robot.Commands.command_shoot;
-import frc.robot.Commands.command_stop;
-import frc.robot.Commands.command_suck;
-import frc.robot.Commands.setposDown;
-import frc.robot.Commands.setposTest;
+import frc.robot.Commands.command_releaseClimber;
+import frc.robot.Commands.command_climb;
+import frc.robot.Commands.command_stopClimber;
+import frc.robot.Commands.command_setposDown;
+import frc.robot.Commands.command_setposUp;
+import frc.robot.Commands.Shooter_Commands.command_shoot;
+import frc.robot.Commands.Shooter_Commands.command_stop;
+import frc.robot.Commands.Shooter_Commands.command_suck;
 import frc.robot.Subsystems.*;
 
 public class RobotContainer {
   private final Chassis m_chassis = new Chassis();
   private final Shooter m_shooter = new Shooter();
   private final Turret m_turret = new Turret();
+  private final Climber m_climber = new Climber();
   
   private final Joystick m_driverController = new Joystick(Constants.kDriverControllerPort);
   private  final Joystick c_mechController = new Joystick(Constants.kMechControllerPort);
@@ -44,15 +48,24 @@ public class RobotContainer {
         .toggleOnTrue(new command_shoot(m_shooter))
         .toggleOnFalse(new command_stop(m_shooter));
 
-    new POVButton(c_mechController, 0).onTrue(new setposTest(m_turret));
-    new POVButton(c_mechController, 180).onTrue(new setposDown(m_turret));
+    new POVButton(c_mechController, 0).onTrue(new command_setposUp(m_turret));
+    new POVButton(c_mechController, 180).onTrue(new command_setposDown(m_turret));
+
+    new JoystickButton(c_mechController, 6)
+        .toggleOnTrue(new command_releaseClimber(m_climber))
+        .toggleOnFalse(new command_stopClimber(m_climber));
+
+    new JoystickButton(c_mechController, 5)
+        .toggleOnTrue(new command_climb(m_climber))
+        .toggleOnFalse(new command_stopClimber(m_climber));
 
 
   }
 
   private void defaultCommands() {
     m_chassis.setDefaultCommand(new DefaultCommand_chassis_mainDrive(m_chassis, m_driverController));
-    m_turret.setDefaultCommand(new DefaultCommand_moveTurret(m_turret, c_mechController));
+    // m_turret.setDefaultCommand(new DefaultCommand_moveTurret(m_turret, c_mechController));
+    // m_climber.setDefaultCommand(new Defaultcommand_climb(m_climber, c_mechController));
 
 
   }

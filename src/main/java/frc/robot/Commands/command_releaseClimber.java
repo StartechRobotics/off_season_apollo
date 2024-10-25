@@ -5,26 +5,33 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Shooter;
+import frc.robot.Subsystems.Climber;
 
-public class command_stop extends Command {
-  /** Creates a new command_stop. */
-  Shooter shooter;
-  public command_stop(Shooter m_shooter) {
-    this.shooter = m_shooter;
-    addRequirements(shooter);
-    // Use addRequirements() here to declare subsystem dependencies.
+public class command_releaseClimber extends Command {
+  Climber climber;
+
+  double power;
+
+  public command_releaseClimber(Climber m_climber) {
+    this.climber = m_climber;
+    addRequirements(climber);
+    
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooter.stop();
+    climber.ReleaseClimber();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    // power = joystick.getRawAxis(3) - joystick.getRawAxis(2);
+
+    // climber.climb(power);
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override
