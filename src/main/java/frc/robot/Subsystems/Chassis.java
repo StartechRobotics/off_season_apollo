@@ -1,4 +1,4 @@
-package frc.robot.Commands;
+package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Chassis extends SubsystemBase {
   TalonSRX tmotor_chasis_fl;
@@ -37,10 +38,10 @@ public class Chassis extends SubsystemBase {
     tmotor_chasis_br.setNeutralMode(NeutralMode.Brake);
     tmotor_chasis_fr.setNeutralMode(NeutralMode.Brake);
 
-    encoder = new Encoder(2,3);
+    encoder = new Encoder(2,3, true);
     encoder.setDistancePerPulse((6*Math.PI)/128);
 
-
+    encoder.reset();
     gyro.reset();
   } 
 

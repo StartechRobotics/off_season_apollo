@@ -2,12 +2,23 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.Commands.Autonomous;
+import frc.robot.Commands.testlaunch;
+import frc.robot.Commands.Chassis_commands.DefaultCommand_chassis_mainDrive;
+import frc.robot.Commands.Climber_commands.command_climb;
+import frc.robot.Commands.Climber_commands.command_releaseClimber;
+import frc.robot.Commands.Climber_commands.command_stopClimber;
+import frc.robot.Commands.Shooter_commands.command_shoot;
+import frc.robot.Commands.Shooter_commands.command_stop;
+import frc.robot.Commands.Shooter_commands.command_suck;
+import frc.robot.Commands.Turret_commands.command_setposDown;
+import frc.robot.Commands.Turret_commands.command_setposUp;
 import frc.robot.Subsystems.*;
 
 public class RobotContainer {
@@ -47,6 +58,7 @@ public class RobotContainer {
 
   private void defaultCommands() {
     m_chassis.setDefaultCommand(new DefaultCommand_chassis_mainDrive(m_chassis, m_driverController));
+
     // m_turret.setDefaultCommand(new DefaultCommand_moveTurret(m_turret, c_mechController));
   }
 

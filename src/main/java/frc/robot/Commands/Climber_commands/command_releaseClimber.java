@@ -2,28 +2,36 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands;
+package frc.robot.Commands.Climber_commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Subsystems.Climber;
 
-public class moveBackward extends Command {
-  Chassis chassis;
+public class command_releaseClimber extends Command {
+  Climber climber;
 
-  public moveBackward(Chassis m_chassis) {
-    this.chassis = m_chassis;
-    addRequirements(chassis);
+  double power;
+
+  public command_releaseClimber(Climber m_climber) {
+    this.climber = m_climber;
+    addRequirements(climber);
+    
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    chassis.moveBackwards();
-
+    climber.ReleaseClimber();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    // power = joystick.getRawAxis(3) - joystick.getRawAxis(2);
+
+    // climber.climb(power);
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -32,6 +40,6 @@ public class moveBackward extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }
