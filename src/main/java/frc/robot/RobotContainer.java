@@ -17,6 +17,7 @@ import frc.robot.Commands.Climber.command_stopClimber;
 import frc.robot.Commands.Shooter.command_shoot;
 import frc.robot.Commands.Shooter.command_stop;
 import frc.robot.Commands.Shooter.command_suck;
+import frc.robot.Commands.Tejuino.NoteLED;
 import frc.robot.Commands.Turret.command_setposDown;
 import frc.robot.Commands.Turret.command_setposUp;
 import frc.robot.Subsystems.*;
@@ -26,6 +27,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Turret m_turret = new Turret();
   private final Climber m_climber = new Climber();
+  private final Tejuino m_tejuino = new Tejuino();
   
   private final Joystick m_driverController = new Joystick(Constants.kDriverControllerPort);
   private  final Joystick c_mechController = new Joystick(Constants.kMechControllerPort);
@@ -54,16 +56,13 @@ public class RobotContainer {
         .toggleOnFalse(new command_stopClimber(m_climber));
 
     new JoystickButton(c_mechController, 3).onTrue(new testlaunch(m_shooter));
-
-
   }
 
   private void defaultCommands() {
     m_chassis.setDefaultCommand(new DefaultCommand_chassis_mainDrive(m_chassis, m_driverController));
+    m_tejuino.setDefaultCommand(new NoteLED(m_tejuino));
+
     // m_turret.setDefaultCommand(new DefaultCommand_moveTurret(m_turret, c_mechController));
-    // m_climber.setDefaultCommand(new Defaultcommand_climb(m_climber, c_mechController));
-
-
   }
 
   public Command getAutonomousCommand() {
