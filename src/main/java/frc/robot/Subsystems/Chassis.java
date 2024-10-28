@@ -2,6 +2,7 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -47,6 +48,22 @@ public class Chassis extends SubsystemBase {
 
     tmotor_chasis_br.set(ControlMode.PercentOutput, rightPower);
     tmotor_chasis_fr.set(ControlMode.PercentOutput, rightPower);
+  }
+
+  public void moveBackwards(){
+    tmotor_chasis_bl.set(ControlMode.PercentOutput, 0.5);
+    tmotor_chasis_fl.set(ControlMode.PercentOutput, 0.5);
+
+    tmotor_chasis_br.set(ControlMode.PercentOutput, 0.7);
+    tmotor_chasis_fr.set(ControlMode.PercentOutput, 0.7);
+  }
+
+  public void stopChassis(){
+    tmotor_chasis_bl.set(ControlMode.PercentOutput, 0);
+    tmotor_chasis_fl.set(ControlMode.PercentOutput, 0);
+
+    tmotor_chasis_br.set(ControlMode.PercentOutput, 0);
+    tmotor_chasis_fr.set(ControlMode.PercentOutput, 0);
   }
 
   //Metodos que se usan en los comandos.

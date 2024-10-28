@@ -15,11 +15,13 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Commands.Autonomous;
 import frc.robot.Commands.DefaultCommand_chassis_mainDrive;
 import frc.robot.Commands.DefaultCommand_moveTurret;
 import frc.robot.Commands.command_releaseClimber;
 import frc.robot.Commands.command_climb;
 import frc.robot.Commands.command_stopClimber;
+import frc.robot.Commands.testlaunch;
 import frc.robot.Commands.command_setposDown;
 import frc.robot.Commands.command_setposUp;
 import frc.robot.Commands.Shooter_Commands.command_shoot;
@@ -59,6 +61,8 @@ public class RobotContainer {
         .toggleOnTrue(new command_climb(m_climber))
         .toggleOnFalse(new command_stopClimber(m_climber));
 
+    new JoystickButton(c_mechController, 3).onTrue(new testlaunch(m_shooter));
+
 
   }
 
@@ -71,6 +75,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return Commands.print("No autonomous command configured");
+    return new Autonomous(m_chassis,m_shooter);
   }
 }

@@ -64,13 +64,20 @@ public class Shooter extends SubsystemBase {
     motor_back.set(power_back);
   }
 
+  public void testamp(){
+    power_small = 0.85;
+    power_big = 0.2;
+
+    motor_small.set(ControlMode.PercentOutput,power_small);
+    motor_big.set(ControlMode.PercentOutput,power_big);
+
+    power_back = 0.8;
+    motor_back.set(power_back);
+  }
+
   // mas metodos-----------
 
   public void stop(){
-    power_small = 0;
-    power_big = 0;
-    power_back = 0;
-
     motor_small.set(ControlMode.PercentOutput, 0);
     motor_big.set(ControlMode.PercentOutput,0);
     motor_back.set(0);
@@ -81,9 +88,9 @@ public class Shooter extends SubsystemBase {
   public void suck(){
     // note_in = !lswitch.get();
     // if (note_in == false){
-      power_small = -0.9;
+      power_small = -0.85;
       power_big = -0.25;
-      power_back = -0.1;
+      power_back = -0.2;
 
       motor_small.set(ControlMode.PercentOutput, power_small);
       motor_big.set(ControlMode.PercentOutput,power_big);
