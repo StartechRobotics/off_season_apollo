@@ -1,13 +1,11 @@
 
 
-package frc.robot.Commands.Shooter_commands;
+package frc.robot.Commands;
 
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
-import frc.robot.Subsystems.Shooter;
 
 public class command_shoot extends Command {
   Shooter shooter;

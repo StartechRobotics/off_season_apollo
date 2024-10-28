@@ -2,24 +2,23 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands.Shooter_commands;
+package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Shooter;
 
-public class command_stop extends Command {
-  /** Creates a new command_stop. */
-  Shooter shooter;
-  public command_stop(Shooter m_shooter) {
-    this.shooter = m_shooter;
-    addRequirements(shooter);
+public class command_stopClimber extends Command {
+  Climber climber;
+
+  public command_stopClimber(Climber m_climber) {
+    this.climber = m_climber;
+    addRequirements(climber);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooter.stop();
+    climber.stop();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
