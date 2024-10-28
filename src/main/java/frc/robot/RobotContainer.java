@@ -4,29 +4,21 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.event.EventLoop;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.Autonomous;
-import frc.robot.Commands.DefaultCommand_chassis_mainDrive;
-import frc.robot.Commands.DefaultCommand_moveTurret;
-import frc.robot.Commands.command_releaseClimber;
-import frc.robot.Commands.command_climb;
-import frc.robot.Commands.command_stopClimber;
 import frc.robot.Commands.testlaunch;
-import frc.robot.Commands.command_setposDown;
-import frc.robot.Commands.command_setposUp;
-import frc.robot.Commands.Shooter_Commands.command_shoot;
-import frc.robot.Commands.Shooter_Commands.command_stop;
-import frc.robot.Commands.Shooter_Commands.command_suck;
+import frc.robot.Commands.Chassis.DefaultCommand_chassis_mainDrive;
+import frc.robot.Commands.Climber.command_climb;
+import frc.robot.Commands.Climber.command_releaseClimber;
+import frc.robot.Commands.Climber.command_stopClimber;
+import frc.robot.Commands.Shooter.command_shoot;
+import frc.robot.Commands.Shooter.command_stop;
+import frc.robot.Commands.Shooter.command_suck;
+import frc.robot.Commands.Turret.command_setposDown;
+import frc.robot.Commands.Turret.command_setposUp;
 import frc.robot.Subsystems.*;
 
 public class RobotContainer {

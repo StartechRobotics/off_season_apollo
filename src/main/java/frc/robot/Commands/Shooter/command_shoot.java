@@ -1,14 +1,11 @@
 
 
-package frc.robot.Commands.Shooter_Commands;
+package frc.robot.Commands.Shooter;
 
-import com.ctre.phoenix6.ISerializable;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Constants;
 import frc.robot.Subsystems.Shooter;
 

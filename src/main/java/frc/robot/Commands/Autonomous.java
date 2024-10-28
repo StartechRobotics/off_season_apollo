@@ -6,16 +6,17 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.Commands.Shooter_Commands.command_shoot;
-import frc.robot.Commands.Shooter_Commands.command_stop;
+import frc.robot.Commands.Chassis.moveBackward;
+import frc.robot.Commands.Chassis.stopchassis;
+import frc.robot.Commands.Shooter.command_shoot;
+
+import frc.robot.Commands.Shooter.stopShooter;
 import frc.robot.Subsystems.Chassis;
 import frc.robot.Subsystems.Shooter;
 
-// NOTE:  Consider using this command inline, rather than writing a subclass.  For more
-// information, see:
-// https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
+
 public class Autonomous extends SequentialCommandGroup {
-  /** Creates a new Autonomous. */
+
   Chassis chassis;
   Shooter shooter;
 
