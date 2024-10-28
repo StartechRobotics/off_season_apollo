@@ -2,44 +2,33 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Commands.Turret;
+package frc.robot.Commands.Shooter_commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Turret;
+import frc.robot.Subsystems.Shooter;
 
-public class DefaultCommand_moveTurret extends Command {
-
-  Turret turret;
-  Joystick joystick;
-
-  double power;
-
-  public DefaultCommand_moveTurret(Turret m_Turret, Joystick m_joystick) {
-    this.turret = m_Turret;
-    this.joystick = m_joystick;
-    addRequirements(turret);
-
+public class command_stop extends Command {
+  /** Creates a new command_stop. */
+  Shooter shooter;
+  public command_stop(Shooter m_shooter) {
+    this.shooter = m_shooter;
+    addRequirements(shooter);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    shooter.stop();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    power = joystick.getRawAxis(3) - joystick.getRawAxis(2);
-
-    turret.move(power);
-
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

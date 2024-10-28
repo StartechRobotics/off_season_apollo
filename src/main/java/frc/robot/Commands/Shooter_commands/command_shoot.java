@@ -1,6 +1,6 @@
 
 
-package frc.robot.Commands.Shooter;
+package frc.robot.Commands.Shooter_commands;
 
 
 import edu.wpi.first.wpilibj.Timer;

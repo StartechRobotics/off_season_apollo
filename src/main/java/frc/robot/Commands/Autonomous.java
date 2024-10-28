@@ -6,11 +6,10 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.Commands.Chassis.moveBackward;
-import frc.robot.Commands.Chassis.stopchassis;
-import frc.robot.Commands.Shooter.command_shoot;
-
-import frc.robot.Commands.Shooter.stopShooter;
+import frc.robot.Commands.Chassis_commands.moveBackward;
+import frc.robot.Commands.Chassis_commands.stopchassis;
+import frc.robot.Commands.Shooter_commands.command_shoot;
+import frc.robot.Commands.Shooter_commands.stopShooter;
 import frc.robot.Subsystems.Chassis;
 import frc.robot.Subsystems.Shooter;
 

@@ -5,6 +5,8 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -15,6 +17,8 @@ public class Chassis extends SubsystemBase {
   TalonSRX tmotor_chasis_br;
 
   ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+
+  Encoder encoder;
 
   double leftPower;
   double rightPower;
@@ -33,6 +37,10 @@ public class Chassis extends SubsystemBase {
     tmotor_chasis_fl.setNeutralMode(NeutralMode.Brake);
     tmotor_chasis_br.setNeutralMode(NeutralMode.Brake);
     tmotor_chasis_fr.setNeutralMode(NeutralMode.Brake);
+
+    encoder = new Encoder(2,3);
+    encoder.setDistancePerPulse((6*Math.PI)/128);
+
 
     gyro.reset();
   } 
@@ -67,5 +75,8 @@ public class Chassis extends SubsystemBase {
 
   //Metodos que se usan en los comandos.
   @Override
-  public void periodic() {}
+  public void periodic() {
+    SmartDashboard.putNumber("Rotations", encoder.getDistance());
+
+  }
 }

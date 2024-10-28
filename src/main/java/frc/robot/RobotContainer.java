@@ -10,16 +10,16 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Commands.Autonomous;
 import frc.robot.Commands.testlaunch;
-import frc.robot.Commands.Chassis.DefaultCommand_chassis_mainDrive;
-import frc.robot.Commands.Climber.command_climb;
-import frc.robot.Commands.Climber.command_releaseClimber;
-import frc.robot.Commands.Climber.command_stopClimber;
-import frc.robot.Commands.Shooter.command_shoot;
-import frc.robot.Commands.Shooter.command_stop;
-import frc.robot.Commands.Shooter.command_suck;
-import frc.robot.Commands.Tejuino.NoteLED;
-import frc.robot.Commands.Turret.command_setposDown;
-import frc.robot.Commands.Turret.command_setposUp;
+import frc.robot.Commands.Chassis_commands.DefaultCommand_chassis_mainDrive;
+import frc.robot.Commands.Climber_commands.command_climb;
+import frc.robot.Commands.Climber_commands.command_releaseClimber;
+import frc.robot.Commands.Climber_commands.command_stopClimber;
+import frc.robot.Commands.Shooter_commands.command_shoot;
+import frc.robot.Commands.Shooter_commands.command_stop;
+import frc.robot.Commands.Shooter_commands.command_suck;
+import frc.robot.Commands.Tejuino_commands.NoteLED;
+import frc.robot.Commands.Turret_commands.command_setposDown;
+import frc.robot.Commands.Turret_commands.command_setposUp;
 import frc.robot.Subsystems.*;
 
 public class RobotContainer {
