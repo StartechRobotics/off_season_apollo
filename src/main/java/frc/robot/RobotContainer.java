@@ -5,11 +5,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-import frc.robot.Commands.Autonomous;
-import frc.robot.Commands.testlaunch;
+import frc.robot.Commands.*;
 import frc.robot.Commands.Chassis_commands.DefaultCommand_chassis_mainDrive;
 import frc.robot.Commands.Climber_commands.command_climb;
 import frc.robot.Commands.Climber_commands.command_releaseClimber;
@@ -25,12 +26,28 @@ public class RobotContainer {
   private final Chassis m_chassis = new Chassis();
   private final Shooter m_shooter = new Shooter();
   private final Turret m_turret = new Turret();
-  private final Climber m_climber = new Climber();
+  // private final Climber m_climber = new Climber();
   
   private final Joystick m_driverController = new Joystick(Constants.kDriverControllerPort);
   private  final Joystick c_mechController = new Joystick(Constants.kMechControllerPort);
 
+  private final SendableChooser<Command> autoChooser = new SendableChooser<>();
+
   public RobotContainer() {
+    final Autonomous original_auto = new Autonomous(m_chassis, m_shooter);
+    final auto_shoot_only shoot_only = new auto_shoot_only(m_shooter);
+    final middle_auto middle_auto = new middle_auto(m_chassis, m_shooter);
+    final auto_short short_auto = new auto_short(m_chassis, m_shooter);
+    final midTwoNotes mid_2_note = new midTwoNotes(m_chassis, m_shooter, m_turret);
+
+    autoChooser.setDefaultOption("Long Auto", original_auto);
+    autoChooser.addOption("shoot only", shoot_only);
+    autoChooser.addOption("middle auto", middle_auto);
+    autoChooser.addOption("short", short_auto);
+    autoChooser.addOption("2 notes mid", mid_2_note);
+
+    SmartDashboard.putData("Auto Selector",autoChooser);
+
     configureBindings();
     defaultCommands();
   }
@@ -45,13 +62,13 @@ public class RobotContainer {
     new POVButton(c_mechController, 0).onTrue(new command_setposUp(m_turret));
     new POVButton(c_mechController, 180).onTrue(new command_setposDown(m_turret));
 
-    new JoystickButton(c_mechController, 6)
-        .toggleOnTrue(new command_releaseClimber(m_climber))
-        .toggleOnFalse(new command_stopClimber(m_climber));
+    // new JoystickButton(c_mechController, 6)
+    //     .toggleOnTrue(new command_releaseClimber(m_climber))
+    //     .toggleOnFalse(new command_stopClimber(m_climber));
 
-    new JoystickButton(c_mechController, 5)
-        .toggleOnTrue(new command_climb(m_climber))
-        .toggleOnFalse(new command_stopClimber(m_climber));
+    // new JoystickButton(c_mechController, 5)
+    //     .toggleOnTrue(new command_climb(m_climber))
+    //     .toggleOnFalse(new command_stopClimber(m_climber));
 
     new JoystickButton(c_mechController, 3).onTrue(new testlaunch(m_shooter));
   }
@@ -63,6 +80,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return new Autonomous(m_chassis,m_shooter);
+    // return new Autonomous(m_chassis,m_shooter);
+    return autoChooser.getSelected(); 
   }
 }

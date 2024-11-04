@@ -10,6 +10,14 @@ import frc.robot.Subsystems.Chassis;
 public class moveBackward extends Command {
   Chassis chassis;
 
+  double error;
+  double init;
+  double setpoint;
+  double position;
+
+  boolean is_ready;
+
+
   public moveBackward(Chassis m_chassis) {
     this.chassis = m_chassis;
     addRequirements(chassis);
@@ -17,14 +25,22 @@ public class moveBackward extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
+  public void initialize() {  
+    // setpoint = 66;
     chassis.moveBackwards();
 
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    // error = setpoint - chassis.getEncoder();
+    // position = chassis.getEncoder();
+
+    // chassis.moveBackwards();
+
+    // is_ready = (position == 66);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

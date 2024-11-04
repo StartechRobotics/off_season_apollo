@@ -58,6 +58,9 @@ public class Turret extends SubsystemBase {
     motor_turret_l.setIdleMode(IdleMode.kBrake);
     motor_turret_r.setIdleMode(IdleMode.kBrake);
 
+    motor_turret_l.setSmartCurrentLimit(Constants.k_Currentlimit_neo);
+    motor_turret_r.setSmartCurrentLimit(Constants.k_Currentlimit_neo);
+
     //inicializar encoders
     encoder_l = motor_turret_l.getEncoder();
     encoder_r = motor_turret_r.getEncoder();
@@ -124,8 +127,8 @@ public class Turret extends SubsystemBase {
   }
   
   public void setPOSUp(){
-    l_PID.setReference(71,ControlType.kPosition);
-    r_PID.setReference(72,ControlType.kPosition);
+    l_PID.setReference(70,ControlType.kPosition);
+    r_PID.setReference(71,ControlType.kPosition);
 
   }
   public void setPOSDown(){

@@ -28,8 +28,9 @@ public class Autonomous extends SequentialCommandGroup {
       new WaitCommand(1),
       new stopShooter(shooter),
       new WaitCommand(0.5),
+      // new AutoMove(chassis)
       new moveBackward(chassis),
-      new WaitCommand(1),
+      new WaitCommand(2.5),
       new stopchassis(chassis)
     
       );

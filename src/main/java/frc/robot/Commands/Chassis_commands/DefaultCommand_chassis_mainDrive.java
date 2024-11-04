@@ -27,7 +27,6 @@ public class DefaultCommand_chassis_mainDrive extends Command {
   @Override
   public void execute() {
     drive = joystick.getRawAxis(2) - joystick.getRawAxis(3);
-    // drive = joystick.getRawAxis(1);
     turn =( joystick.getRawAxis(0) * Constants.kTurn); 
 
     R_chassis.mainDrive(drive,turn);

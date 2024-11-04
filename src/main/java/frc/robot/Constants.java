@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class Constants {
     
     public static final int kDriverControllerPort = 0;
@@ -7,6 +9,10 @@ public class Constants {
     public static final double kTurn = 0.6;
     public static final double kShooterRatio = 2/(23/8);
     public static final double kChargeTimeMs = 800;
+
+    public static final double kP_turn = SmartDashboard.getNumber("KP", 0);
+    public static final double kI_turn = SmartDashboard.getNumber("KI", 0);
+    public static final double KD_turn = SmartDashboard.getNumber("KD", 0);
 
     public static final int TMOTOR_CHASSIS_FL = 9;
     public static final int TMOTOR_CHASSIS_BL = 10;
@@ -41,4 +47,9 @@ public class Constants {
     // --------------
     public static final int SUCK_BUTTON = 2;
     public static final int SHOOT_BUTTON = 1;
+
+    public static final int k_Currentlimit_neo = 40;
+    public static final int k_Currentlimit_CIM = 40;
+    public static final int k_Currentlimit_miniCIM = 25;
+    public static final int k_timeToFull_ms = 500;
 }

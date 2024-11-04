@@ -36,6 +36,10 @@ public class Shooter extends SubsystemBase {
     motor_big = new TalonSRX(Constants.TMOTOR_INTAKE_BIG);
     motor_back = new CANSparkMax(Constants.SMOTOR_INTAKE_BACK, MotorType.kBrushed);
 
+    motor_small.configContinuousCurrentLimit(Constants.k_Currentlimit_CIM, 500);
+    motor_big.configContinuousCurrentLimit(Constants.k_Currentlimit_miniCIM, 500);
+    motor_back.setSmartCurrentLimit(Constants.k_Currentlimit_neo);
+
     motor_big.setNeutralMode(NeutralMode.Brake);
     motor_back.setIdleMode(IdleMode.kBrake);
 
